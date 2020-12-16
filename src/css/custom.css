@@ -1,0 +1,13 @@
+#mybg, #mybg::before, #mybg::after {
+    background-attachment: fixed;
+}
+
+.masthead {
+    width: 100%;
+    min-height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+
+}

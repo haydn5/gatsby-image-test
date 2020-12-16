@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -16,7 +16,7 @@ const IndexPage = ({data}) => (
     <Container>
       <h1>Hi people</h1>
       <Row>
-        <Col lg={12}>
+        <Col lg={6}>
           <p>
             <img 
               src={lakePhoto} 
@@ -25,7 +25,7 @@ const IndexPage = ({data}) => (
             />
           </p>
         </Col>
-        <Col lg={12}>
+        <Col lg={6}>
           <p>
             <Img 
               fluid={data.indexImage.childImageSharp.fluid}
@@ -34,6 +34,7 @@ const IndexPage = ({data}) => (
           </p>
         </Col>
       </Row>
+      <Link to="/page-2">Gatsby Background Image</Link>
     </Container>
 
   </Layout>
