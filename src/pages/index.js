@@ -1,23 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import { Container, Row, Col } from "react-bootstrap"
+
+import lakePhoto from "../images/lake.jpg"
+
+import Img from "gatsby-image"
+
+const IndexPage = ({data}) => (
   <Layout>
     <SEO title="This the Home Page" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    <p>This is the bottom sentence for the home page.</p>
+    <Container>
+      <h1>Hi people</h1>
+      <Row>
+        <Col lg={6}>
+          <img 
+            src={lakePhoto} 
+            alt="lake in fall surround by multi-color trees" 
+            className="img-fluid"
+          />
+        </Col>
+        <Col lg={6}>
+          <Img 
+            fluid={data.indexImage.childImageSharp.fluid}
+            alt="mountains with snow and a lake at the bottom"
+          />
+        </Col>
+      </Row>
+    </Container>
+
   </Layout>
 )
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query {
+    indexImage: file(base: {eq: "mountains.jpg"}) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
