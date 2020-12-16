@@ -16,18 +16,22 @@ const IndexPage = ({data}) => (
     <Container>
       <h1>Hi people</h1>
       <Row>
-        <Col lg={6}>
-          <img 
-            src={lakePhoto} 
-            alt="lake in fall surround by multi-color trees" 
-            className="img-fluid"
-          />
+        <Col lg={12}>
+          <p>
+            <img 
+              src={lakePhoto} 
+              alt="lake in fall surround by multi-color trees" 
+              className="img-fluid"
+            />
+          </p>
         </Col>
-        <Col lg={6}>
-          <Img 
-            fluid={data.indexImage.childImageSharp.fluid}
-            alt="mountains with snow and a lake at the bottom"
-          />
+        <Col lg={12}>
+          <p>
+            <Img 
+              fluid={data.indexImage.childImageSharp.fluid}
+              alt="mountains with snow and a lake at the bottom"
+            />
+          </p>
         </Col>
       </Row>
     </Container>
@@ -41,7 +45,7 @@ export const pageQuery = graphql`
   query {
     indexImage: file(base: {eq: "mountains.jpg"}) {
       childImageSharp {
-        fluid {
+        fluid(maxWidth: 1400, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
