@@ -11,3 +11,9 @@
     margin-bottom: 1rem;
 
 }
+
+@media screen and (max-width: 768px) {
+    #mybg, #mybg::before, #mybg::after {
+        background-attachment: scroll;
+    }
+}
